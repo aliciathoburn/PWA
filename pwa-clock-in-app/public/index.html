@@ -8,6 +8,24 @@
 </head>
 <body>
     <div id="root"></div>
+    <button id="logButton">Log Time and Location</button>
+    <script>
+        document.getElementById('logButton').addEventListener('click', () => {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(position => {
+                    const time = new Date().toLocaleString();
+                    const location = `Latitude: ${position.coords.latitude}, Longitude: ${position.coords.longitude}`;
+                    console.log(`Time: ${time}, Location: ${location}`);
+                    alert(`Time: ${time}\nLocation: ${location}`);
+                }, error => {
+                    console.error('Error getting location:', error);
+                    alert('Unable to retrieve location.');
+                });
+            } else {
+                alert('Geolocation is not supported by your browser.');
+            }
+        });
+    </script>
     <script src="../dist/bundle.js"></script>
 </body>
 </html>
