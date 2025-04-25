@@ -2,9 +2,7 @@ self.addEventListener('install', event => {
     event.waitUntil(
         caches.open('pwa-clock-in-app-v1').then(cache => {
             return cache.addAll([
-                '/index.html',
-                '/manifest.json',
-                '/',
+                '/index.html'
             ]);
         })
     );
